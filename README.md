@@ -1,11 +1,12 @@
 # ZedBoard PetaLinux BSPs for Vivado 2024.2+
 New PetaLinux is nice because it runs on RHEL and it has a newer kernel. Unfortunately, there is no official ZedBoard BSP for the newer PetaLinux, so we have to make one ourselves.
 
-You can either download the BSP from the releases and directly create a petalinux-project with it...
+**You can download the BSP from the releases and directly create a petalinux-project with it...**
 ```bash
-
+$ wget https://github.com/ubfx/zedboard-bsp/releases/download/2024.2/zedboard-2024.2.bsp
+$ petalinux-create project -s zedboard-2024.2.bsp -n zedboard-2024.2
 ```
-... and continue with step [Build](#Build) or step [Flash](#Flash) if you want to use the pre-built image contained in the release.
+**... and continue with step [Build](#Build).**
 
 Or you can manually create the BSP as described in the following section.
 
@@ -91,4 +92,4 @@ $ petalinux-package boot --plm --psmfw --u-boot --dtb --fsbl --fpga  --force
 ```
 
 ## Flash
-...
+Follow [this tutorial](https://xilinx.github.io/vmk180-trd/2020.2/platform3/html/build-plnx.html#create-an-sd-card-image) to create a bootable SD card image.
