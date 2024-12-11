@@ -66,10 +66,11 @@ Now copy these files from the old BSP to the new petalinux project
 That's it, you should now be able to build the project and create the boot image.
 
 ## Build
-If you downloaded the BSP from releases, this step can be skipped
 ```bash
 $ petalinux-build
 ```
+
+This should create all the binaries in the `images/` folder.
 
 ## Create boot image
 ```bash
