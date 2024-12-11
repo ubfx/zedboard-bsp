@@ -26,11 +26,11 @@ First step is now to open the Vivado project contained in that bsp/archive with 
 
 The blockdiagram can remain unchanged from the original BSP, but of course you can also make project-dependent changes.
 
-!Screenshot(screenshots/blockdiagram.png)
+![Screenshot](screenshots/blockdiagram.png)
 
 Then export the Hardware by going to File->Export->Hardware and export it including the bitstream
 
-!Screenshot(screenshots/export_hw.png)
+![Screenshot](screenshots/export_hw.png)
 
 Next we will use the new SDT flow to generate device tree data from the xsa file we just exported. For that, run the `xsct` tool from command line (this tool comes with the Vivado/Vitis installation). After the `-xsa`, put the path to the xsa file that you just exported from Vivado.
 ```
@@ -40,9 +40,9 @@ xsct% sdtgen set_dt_param -dir zed2024_out_sdt -xsa zedboard_2024.2/system.xsa -
 xsct% sdtgen generate_sdt  
 ```
 
-This should have generated a folder `zed2024_out_sdt` which we can now use as Hardware description for petalinux. You might have to adapt the path to the generated sdt in the following commands. The folder contents shoud look something like this:
+This should have generated a folder `zed2024_out_sdt` which we can now use as Hardware description for PetaLinux. You might have to adapt the path to the generated sdt in the following commands. The folder contents shoud look something like this:
 
-!Screenshot(screenshots/sdt_outputs.png)
+![Screenshot](screenshots/sdt_outputs.png)
 
 Now we can create the PetaLinux project.
 
@@ -52,7 +52,7 @@ $ cd zedboard-2024.2/
 $ petalinux-config --get-hw-description zed2024_out_sdt --silentconfig
 ```
 
-You can now make changes to the overall petalinux configuration or rootfs (i.e. included packages etc), but you can also leave everything at default. Note: Don't copy the configuration files from the old BSP because the available settings and options don't match perfectly. If you really care, you can diff `config` and `rootfs_config` files between the newly generated project and the old BSP.
+You can now make changes to the overall PetaLinux configuration or rootfs (i.e. included packages etc), but you can also leave everything at default. Note: Don't copy the configuration files from the old BSP because the available settings and options don't match perfectly. If you really care, you can diff `config` and `rootfs_config` files between the newly generated project and the old BSP.
 ```bash
 $ petalinux-config #optional
 $ petalinux-config -c rootfs #optional
